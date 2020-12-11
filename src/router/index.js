@@ -5,6 +5,8 @@ import Home from '../views/Home.vue'
 import ProductDetail from "../views/ProductDetail";
 
 import Panier from "@/views/Panier";
+import Connexion from "@/views/Connexion";
+import Inscription from "@/views/Inscription";
 
 
 Vue.use(VueRouter)
@@ -16,7 +18,16 @@ const routes = [
     component: Home
   },
   {
-
+    path: '/login',
+    name: 'Connexion',
+    component: Connexion
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Inscription
+  },
+  {
     path: '/ProductDetail/:id',
     name: 'ProductDetail',
     component: ProductDetail
