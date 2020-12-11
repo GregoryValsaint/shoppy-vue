@@ -23,7 +23,7 @@ export default new Vuex.Store({
         // authStatus: state => state.status
     },
     mutations: {
-        logToken: (state)=> {
+        logTokenLoading: (state)=> {
             state.status = 'loading'
         },
         logTokenSuccess: (state, token) => {
@@ -36,7 +36,7 @@ export default new Vuex.Store({
     },
     actions: {
         async logToken({commit}, user) {
-          commit('logToken');
+          commit('logTokenLoading');
             try {
                 const response = await Axios.post('http://127.0.0.1:8000/api/login_check', {
                     "username": "william@codecolliders.com",
@@ -44,6 +44,7 @@ export default new Vuex.Store({
                 })
                 this.token = response.data.token;
                 localStorage.setItem('user-token', this.token)
+                Axios.defaults.headers.Authorization = "Bearer " + this.token
                commit('logTokenSuccess', this.token)
             } catch {
                commit('logTokenError', error)
