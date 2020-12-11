@@ -1,16 +1,19 @@
 <template>
   <div>
-    <div class="cart">
+    <br class="cart">
       Votre commande est la suivante :
-      <span v-for="order in cart.orderLines"> Nom: {{order.product.name}}
-        Prix à l'unité: {{order.product.price}}
-        Quantité : {{order.quantity}} </span>
+    <ul>
+      <li v-for="order in cart.orderLines">
+        {{order.quantity}} | {{order.product.name}} | Total: {{order.total}}
+      </li>
+    </ul>
       <p> Total :{{cart.total}}</p>
-    </div>
+
     <div class="user">
+      <p> Nom :{{cart.user.name}}</p>
+      <p> Adresse :{{cart.user.address}}</p>
       <p> Email :{{cart.user.email}}</p>
     </div>
-    <div>{{cart}}</div>
   </div>
 </template>
 
