@@ -2,9 +2,8 @@
 <div>
   <div>
     Votre commande est la suivante :
-    <span v-for="orderline in cart.orderLines">{{orderline}}</span>
-    <span>{{cart.user}}</span>
-    <span>{{cart.total}}</span>
+
+    <div>{{cart}}</div>
   </div>
 </div>
 </template>
@@ -16,18 +15,24 @@ export default {
 name: "Panier",
   data() {
     return {
-      cart: {},
+      cart: null,
     }
   },
   methods: {
-    fetchCart() {
-      const response = Axios.get("http://127.0.0.0:8000/api/get-cart")
-      this.cart = response.data
+    async fetchCart() {
+      const response = await Axios.get('http://127.0.0.0:8000/api/get-cart', {
+        headers: {
+          'Bearer ': this.$store.token
+        }
+      });
+      this.cart = response.data;
+      console.log(response.data);
     }
   },
   mounted() {
-    this.fetchCart()
-  }
+    this.fetchCart();
+
+  },
 };
 </script>
 
