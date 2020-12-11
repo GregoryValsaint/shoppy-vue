@@ -9,6 +9,7 @@ export default new Vuex.Store({
     state: {
         token: localStorage.getItem('user-token') || '',
         status: '',
+        listProducts: []
     },
     getters: {
         isConnected(state){
@@ -18,6 +19,12 @@ export default new Vuex.Store({
                 return true;
             }
         },
+        getProduct(state){
+            return function (index) {
+                return state.listProducts[index]
+            }
+
+        }
 
         // isAuthenticated: state => !!state.token,
         // authStatus: state => state.status
@@ -32,6 +39,10 @@ export default new Vuex.Store({
         },
         logTokenError: (state) => {
             state.status = 'error'
+        },
+
+        setProducts(state, productsToDisplay){
+            state.listProducts = productsToDisplay
         }
     },
     actions: {
@@ -50,7 +61,12 @@ export default new Vuex.Store({
                commit('logTokenError', error)
                 localStorage.removeItem('user-token')
             }
-        }
+        },
+        async fetchProduct(context) {
+            const response = await Axios.get("http://127.0.0.1:8000/api/products")
+            const listProducts = response.data
+            context.commit("setProducts", listProducts)
+        },
     },
     modules: {}
 })

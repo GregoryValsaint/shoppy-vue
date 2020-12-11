@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+
+import ProductDetail from "../views/ProductDetail";
+
 import Panier from "@/views/Panier";
+
 
 Vue.use(VueRouter)
 
@@ -12,10 +16,18 @@ const routes = [
     component: Home
   },
   {
+
+    path: '/ProductDetail/:id',
+    name: 'ProductDetail',
+    component: ProductDetail
+  },
+  {
     path: '/panier',
     name: 'Panier',
     component: Panier
+
   }
+
 ]
 
 const router = new VueRouter({
