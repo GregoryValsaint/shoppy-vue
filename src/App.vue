@@ -2,6 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
+      <router-link to="/register">Inscription</router-link> |
       <router-link :to="{name: 'Panier'}">Panier</router-link>
     </div>
     <router-view/>
