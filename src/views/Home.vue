@@ -29,7 +29,6 @@ export default {
     },
   },
   components: {
-
   },
   async mounted() {
    await this.$store.dispatch('logToken')
