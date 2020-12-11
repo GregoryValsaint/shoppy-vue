@@ -1,13 +1,11 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
 
-    <li>
-      <router-link :key="i" v-for="(product, i) in $store.state.listProducts"
+      <router-link class="product" :key="i" v-for="(product, i) in $store.state.listProducts"
               :to="{name: 'ProductDetail', params: {id: i, name}}">
         {{ product.name }}
       </router-link>
-    </li>
+
 
   </div>
 </template>
@@ -35,3 +33,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .product{
+    display: block;
+  }
+</style>
