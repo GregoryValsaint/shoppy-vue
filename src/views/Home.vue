@@ -27,9 +27,15 @@ export default {
       })
     },
   },
-  async mounted() {
-   await this.$store.dispatch('logToken')
-    await this.$store.dispatch('fetchProduct')
+   async mounted() {
+      if (!this.$store.getters.isConnected){
+         await this.$router.push({
+              name: 'Connexion'
+          })
+      }else{
+          // await this.$store.dispatch('logToken')
+          await this.$store.dispatch('fetchProduct')
+      }
   }
 }
 </script>

@@ -13,7 +13,7 @@ export default new Vuex.Store({
     },
     getters: {
         isConnected(state){
-            if(state.token === null){
+            if(state.token === ""){
                 return false
             }else{
                 return true;
@@ -50,8 +50,8 @@ export default new Vuex.Store({
           commit('logTokenLoading');
             try {
                 const response = await Axios.post('http://127.0.0.1:8000/api/login_check', {
-                    "username": "william@codecolliders.com",
-                    "password": "password"
+                    "username": user.email,
+                    "password": user.password
                 })
                 this.token = response.data.token;
                 localStorage.setItem('user-token', this.token)
