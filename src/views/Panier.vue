@@ -14,6 +14,10 @@
       <p> Adresse :{{cart.user.address}}</p>
       <p> Email :{{cart.user.email}}</p>
     </div>
+    <div>
+      <router-link
+      :to="{name: 'Home'}"><button @click="validCart">Valider la commande</button></router-link>
+    </div>
   </div>
 </template>
 
@@ -32,6 +36,11 @@ export default {
       const response = await Axios.get("http://127.0.0.1:8000/api/get-cart")
       this.cart = response.data
       console.log(response.data);
+    },
+    async validCart(){
+       await Axios.put('http://127.0.0.1:8000/api/confirm-cart', {
+        status: "PROCESSING"
+      })
     }
   },
   async mounted() {
