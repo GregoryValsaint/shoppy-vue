@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     async addProduct() {
-      const response = await Axios.get("http://127.0.0.1:8000/api/products", {
+      const response = await Axios.get(process.env.VUE_APP_API_URL+"/api/products", {
         name: this.message
       })
     },

@@ -38,7 +38,7 @@
         },
         methods: {
            async addCart() {
-               await Axios.put("http://127.0.0.1:8000/api/add-to-cart", {
+               await Axios.put(process.env.VUE_APP_API_URL+"/api/add-to-cart", {
                     product: this.productDetail.id,
                     quantity: this.quantity
                 })

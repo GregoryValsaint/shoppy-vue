@@ -7,6 +7,7 @@ import ProductDetail from "../views/ProductDetail";
 import Panier from "@/views/Panier";
 import Connexion from "@/views/Connexion";
 import Inscription from "@/views/Inscription";
+import userBoard from "../views/userBoard";
 
 
 Vue.use(VueRouter)
@@ -36,6 +37,12 @@ const routes = [
     path: '/panier',
     name: 'Panier',
     component: Panier
+
+  },
+  {
+    path: '/userBoard',
+    name: 'userBoard',
+    component: userBoard
 
   }
 

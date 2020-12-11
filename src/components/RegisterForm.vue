@@ -31,7 +31,7 @@
         methods:
             {
                 async addUser() {
-                    await Axios.post("http://127.0.0.1:8000/api/register",
+                    await Axios.post(process.env.VUE_APP_API_URL+"/api/register",
                         this.currentUser
                     )
                     this.$refs.myInput.focus()

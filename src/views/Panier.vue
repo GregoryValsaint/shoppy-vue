@@ -33,15 +33,15 @@ export default {
   },
   methods: {
     async fetchCart() {
-      const response = await Axios.get("http://127.0.0.1:8000/api/get-cart")
+      const response = await Axios.get(process.env.VUE_APP_API_URL+"/api/get-cart")
       this.cart = response.data
       console.log(response.data);
     },
     async validCart(){
-       await Axios.put('http://127.0.0.1:8000/api/confirm-cart', {
+       await Axios.put(process.env.VUE_APP_API_URL+'/api/confirm-cart', {
         status: "PROCESSING"
       })
-    }
+    },
   },
   async mounted() {
     await this.fetchCart();

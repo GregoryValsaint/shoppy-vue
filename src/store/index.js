@@ -49,7 +49,7 @@ export default new Vuex.Store({
         async logToken({commit}, user) {
           commit('logTokenLoading');
             try {
-                const response = await Axios.post('http://127.0.0.1:8000/api/login_check', {
+                const response = await Axios.post(process.env.VUE_APP_API_URL+'/api/login_check', {
                     "username": user.email,
                     "password": user.password
                 })
@@ -63,7 +63,7 @@ export default new Vuex.Store({
             }
         },
         async fetchProduct(context) {
-            const response = await Axios.get("http://127.0.0.1:8000/api/products")
+            const response = await Axios.get(process.env.VUE_APP_API_URL+"/api/products")
             const listProducts = response.data
             context.commit("setProducts", listProducts)
         },

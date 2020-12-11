@@ -3,7 +3,8 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/register">Inscription</router-link> |
-      <router-link :to="{name: 'Panier'}">Panier</router-link>
+      <router-link :to="{name: 'Panier'}">Panier</router-link> |
+      <router-link to="/userBoard"> Mon Compte </router-link>
     </div>
     <router-view/>
   </div>
