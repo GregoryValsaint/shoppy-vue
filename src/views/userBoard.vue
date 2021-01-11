@@ -2,39 +2,41 @@
     <div>
       <p> Email :{{ this.user.email}}</p>
       <p> Nom : {{ this.user.name}}</p>
-      <p> {{this.listCart.status}}</p>
-      <p> Total commande :{{this.listCart.total}}</p>
-      <li v-for="line in this.listCart.orderLines"> Quantité :{{line.quantity}}, Nom: {{line.product.name}}, Prix unitaire :{{line.product.price}}, Total :{{ line.total}}</li>
-
+      <OrderDetails v-for="order in listOrders" :key="order.id" :id = "order.id" />
     </div>
 </template>
 
 <script>
     import Axios from "axios";
+    import OrderDetails from "@/components/OrderDetails";
 
     export default {
         name: "userBoard",
+      components: {OrderDetails},
         data() {
             return {
                 user: "",
-                listCart: ""
+                listOrders: "",
+                listOrder: ""
             }
         },
         methods: {
             async getUser() {
                 const response = await Axios.get(process.env.VUE_APP_API_URL+'/api/account')
                 this.user = response.data
-                console.log(response)
+                console.log(response.data)
             },
-          async getCart() {
-              const response = await Axios.get(process.env.VUE_APP_API_URL+'/api/get-cart')
-              this.listCart = response.data
-              console.log (response)
-          }
+          async getOrders() {
+              const response = await Axios.get(process.env.VUE_APP_API_URL+'/api/orders')
+              this.listOrders = response.data
+              console.log (response.data)
+          },
+
         },
         mounted() {
             this.getUser()
-            this.getCart()
+            this.getOrders()
+
         }
     }
 </script>

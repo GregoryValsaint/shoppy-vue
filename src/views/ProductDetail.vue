@@ -12,8 +12,8 @@
         </select>
         </div>
         <div>
-      <router-link
-      :to="{name: 'Panier'}"><button @click="addCart">Ajouter au Panier</button></router-link>
+
+      <button @click="addCart">Ajouter au Panier</button>
         </div>
     </div>
 
@@ -42,7 +42,7 @@
                     product: this.productDetail.id,
                     quantity: this.quantity
                 })
-
+                   this.$router.push({name: 'Panier'})
             }
         },
     };
