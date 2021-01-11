@@ -1,5 +1,8 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
   <div id="app">
+    <div>
+      <button type="submit" @click="logoutUser">Déconnexion</button>
+    </div>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/register">Inscription</router-link> |
@@ -14,6 +17,14 @@
 
 export default {
   name: "App",
+  methods: {
+    async logoutUser(){
+      await this.$store.commit('logout')
+      await this.$router.push({
+        name: 'Home'
+      })
+    },
+  },
 }
 </script>
 

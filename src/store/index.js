@@ -40,6 +40,11 @@ export default new Vuex.Store({
         logTokenError: (state) => {
             state.status = 'error'
         },
+        logout: (state) => {
+           state.token = ""
+            localStorage.removeItem('user-token')
+            Axios.defaults.headers.Authorization = ""
+        },
 
         setProducts(state, productsToDisplay){
             state.listProducts = productsToDisplay
