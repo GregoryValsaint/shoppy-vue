@@ -13,11 +13,7 @@ export default new Vuex.Store({
     },
     getters: {
         isConnected(state){
-            if(state.token === ""){
-                return false
-            }else{
-                return true;
-            }
+            return state.token !== "";
         },
         getProduct(state){
             return function (index) {
