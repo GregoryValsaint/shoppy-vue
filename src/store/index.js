@@ -29,6 +29,7 @@ export default new Vuex.Store({
         // isAuthenticated: state => !!state.token,
         // authStatus: state => state.status
     },
+    // commit sur les autres components dans la vue permet d'appeler les mutations.
     mutations: {
         logTokenLoading: (state)=> {
             state.status = 'loading'
@@ -50,6 +51,7 @@ export default new Vuex.Store({
             state.listProducts = productsToDisplay
         }
     },
+    // dispatch sur les autres components dans la vue permet d'appeler les actions
     actions: {
         async logToken({commit}, user) {
           commit('logTokenLoading');
